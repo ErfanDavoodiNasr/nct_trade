@@ -7,14 +7,25 @@ public class Help {
     private static final Scanner scanner = new Scanner(System.in);
 
 
-    public final static List<String> symbols = List.of("USDCHF", "GBPUSD", "EURUSD", "USDJPY",
-            "USDCAD", "AUDUSD", "EURGBP", "EURAUD", "EURCHF", "EURJPY", "GBPCHF",
-            "CADJPY", "GBPJPY", "AUDNZD", "AUDCAD", "AUDCHF", "AUDJPY", "CHFJPY",
-            "EURNZD", "EURCAD", "CADCHF", "NZDJPY", "NZDUSD", "GBPCAD", "AUDSGD",
-            "GBPAUD", "GBPNZD", "GBPSEK", "GBPSGD", "NZDCAD", "NZDCHF", "EURSEK",
-            "EURSGD", "SGDJPY", "USDDKK", "USDHUF", "USDNOK", "USDSEK", "USDSGD",
-            "USDZAR", "EURPLN", "USDTRY", "USDPLN"
+    public static List<String> symbols = List.of(
+            "AUDCAD", "AUDCHF", "AUDJPY", "AUDNZD", "AUDSGD", "AUDUSD",
+            "CADAUD", "CADCHF", "CADHKD", "CADJPY", "CADPLN", "CADSGD", "CADUSD",
+            "CHFHKD", "CHFJPY", "CHFPLN", "CHFUSD", "CHFSAR", "CHFTWD", "CADINR",
+            "DKKHKD", "DKKJPY", "DKKNOK", "DKKPLN", "DKKSEK", "DKKUSD",
+            "EURAUD", "EURCAD", "EURCHF", "EURDKK", "EURGBP", "EURHKD", "EURHUF",
+            "EURINR", "EURJPY", "EURNOK", "EURNZD", "EURPLN", "EURRON", "EURRUB",
+            "EURSEK", "EURSGD", "EURTRY", "EURUSD", "GBPCHF", "GBPCAD", "GBPAUD",
+            "GBPNOK", "GBPNZD", "GBPPLN", "GBPSEK", "GBPUSD", "GBPJPY", "GBPZAR",
+            "JPYPLN", "JPYSGD", "JPYTWD", "JPYUSD", "NOKJPY", "NOKPLN", "NOKSEK",
+            "NOKUSD", "NZDAUD", "NZDCAD", "NZDCHF", "NZDJPY", "NZDPLN", "NZDSGD",
+            "NZDUSD", "PLNJPY", "PLNTWD", "PLNUSD", "SEKJPY", "SEKPLN",
+            "SEKUSD", "SGDCHF", "SGDHKD", "SGDINR", "SGDJPY", "SGDPLN", "SGDTWD",
+            "SGDUSD", "USDARS", "USDAUD", "USDCAD", "USDCHF", "USDHKD", "USDHUF",
+            "USDILS", "USDINR", "USDMXN", "USDNOK", "USDPLN", "USDRON", "USDRUB",
+            "USDSEK", "USDSGD", "USDTRY", "USDZAR", "USDJPY", "AUDHKD", "AUDINR",
+            "AUDPLN"
     );
+
 
     public static Double getPipLocation(String symbol) {
         Double pipLocation = 0.0001, result;
