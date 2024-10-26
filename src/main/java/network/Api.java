@@ -27,14 +27,14 @@ public class Api {
             try {
                 JSONObject jsonObject = new JSONObject(content.toString());
                 if (!jsonObject.has("close|60")) {
-                    throw new SymbolNotFoundException("Invalid currency symbol or price data not available.");
+                    throw new SymbolNotFoundException(currencyPair +": Invalid currency symbol or price data not available.");
                 }
                 return jsonObject.getDouble("close|60");
             } catch (JSONException e) {
-                throw new SymbolNotFoundException("Invalid currency symbol or price data not available.");
+                throw new SymbolNotFoundException(currencyPair +": Invalid currency symbol or price data not available.");
             }
         } catch (IOException e) {
-            throw new SymbolNotFoundException("Invalid currency symbol or price data not available.");
+            throw new SymbolNotFoundException(currencyPair +": Invalid currency symbol or price data not available.");
         } finally {
             conn.disconnect();
         }
