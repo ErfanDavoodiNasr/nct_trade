@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Java console application provides essential tools for forex trading, allowing users to perform various calculations related to live forex prices, position sizing, margin requirements, and pip values. Designed with simplicity in mind, the application is user-friendly and efficient for traders of all experience levels.
+This Java console application provides essential tools for forex trading, allowing users to perform various calculations related to live forex prices, position sizing, margin requirements, and pip values, and currency conversion. Designed with simplicity in mind, the application is user-friendly and efficient for traders of all experience levels.
 
 ## Features
 
@@ -15,6 +15,8 @@ This Java console application provides essential tools for forex trading, allowi
 - **Margin Calculator**: Determine the required margin for opening a trade based on trade size, symbol, and margin ratio.
   
 - **Value of One Pip**: Calculate the monetary value of a single pip movement for a given currency pair.
+
+- **currency converter**: Convert currencies based on the latest exchange rates.
 
 - **Interactive Console Menu**: Navigate through options with a simple console interface.
 
@@ -49,7 +51,8 @@ Upon running the application, you will be presented with a menu where you can ch
 2. Position size calculation
 3. Margin calculator
 4. Value of one pip
-5. Exit the application
+5. currency converter
+6. Exit the application
 
 Follow the prompts to input the necessary data for each calculation.
 
