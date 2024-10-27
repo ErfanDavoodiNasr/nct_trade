@@ -35,7 +35,7 @@ public class Calculator {
     }
 
     public static void getAllLivePrice() throws Exception {
-        try{
+        try {
             Thread t1 = new Thread(new ThreadLivePrice1());
             Thread t2 = new Thread(new ThreadLivePrice2());
             Thread t3 = new Thread(new ThreadLivePrice3());
@@ -54,7 +54,7 @@ public class Calculator {
             t4.join();
             t5.join();
             t6.join();
-        }catch (Exception e){
+        } catch (Exception e) {
             println(e.getMessage());
         }
     }
@@ -62,5 +62,13 @@ public class Calculator {
     public static void getBySymbol(String symbol) throws Exception {
         System.out.printf("%-9s %-10s\n", "symbol", "price");
         System.out.printf("%-9s %-10s\n", Help.formatSymbol(symbol), Api.getForexPrice(symbol));
+    }
+
+    public static Double[] currencyConverter(String firstCurrency, String secondCurrency) throws Exception {
+        Double[] result = new Double[2];
+        // result[0] = firstSecond   &   result[1] = secondFirst
+        result[0] = Api.getForexPrice(firstCurrency.concat(secondCurrency));
+        result[1] = Api.getForexPrice(secondCurrency.concat(firstCurrency));
+        return result;
     }
 }

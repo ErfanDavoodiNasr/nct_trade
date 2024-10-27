@@ -21,16 +21,32 @@ public class Runner {
             println("2 - position size");
             println("3 - margin calculator");
             println("4 - value of one pip");
-            println("5 - exit");
+            println("5 - currency converter");
+            println("6 - exit");
             Integer number = intInput("choose a number: ");
             switch (number) {
                 case 1 -> livePriceMenu();
                 case 2 -> positionSize();
                 case 3 -> margin();
                 case 4 -> valueOfOnePip();
-                case 5 -> System.exit(0);
-                default -> println("choose a number between 1 and 5");
+                case 5 -> CurrencyConverter();
+                case 6 -> System.exit(0);
+                default -> println("choose a number between 1 and 6");
             }
+        }
+    }
+
+    private static void CurrencyConverter() {
+        try{
+            String firstCurrency = input("enter first currency: ").toUpperCase();
+            String secondCurrency = input("enter second currency: ").toUpperCase();
+            Double[] result = Calculator.currencyConverter(firstCurrency, secondCurrency);
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.00000");
+            println("1 ".concat(firstCurrency).concat(" = ") + decimalFormat.format(result[0]) + " ".concat(secondCurrency));
+            println("1 ".concat(secondCurrency).concat(" = ") + decimalFormat.format(result[1]) + " ".concat(firstCurrency));
+
+        }catch (Exception e) {
+            println(e.getMessage());
         }
     }
 
@@ -41,7 +57,7 @@ public class Runner {
             Integer marginRatio = intInput("enter margin ratio: ");
             Double tradeSize = doubleInput("enter trade size(lots): ");
             Double result = Calculator.margin(tradeSize, symbol, accountCurrency, marginRatio);
-            DecimalFormat decimalFormat = new DecimalFormat("#,##0.000");
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.0000");
             println("result: " + decimalFormat.format(result));
         } catch (Exception e) {
             println(e.getMessage());
@@ -52,7 +68,7 @@ public class Runner {
         try {
             String symbol = input("enter symbol(EURUSD, USDJPY, ...): ").toUpperCase();
             double result = Calculator.valueOfOnePip(symbol);
-            DecimalFormat decimalFormat = new DecimalFormat("#,##0.000");
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.0000");
             println("result: " + decimalFormat.format(result));
         } catch (Exception e) {
             println(e.getMessage());
@@ -69,7 +85,7 @@ public class Runner {
             double result = Calculator.positionSize(balance, amountOfRisk, symbol, stopLoss);
             DecimalFormat decimalFormat = new DecimalFormat("#,##0");
             println("units: " + decimalFormat.format((result * 10_000)));
-            decimalFormat = new DecimalFormat("#,##0.000");
+            decimalFormat = new DecimalFormat("#,##0.0000");
             println("Lots: " + decimalFormat.format(result));
         } catch (Exception e) {
             println(e.getMessage());
