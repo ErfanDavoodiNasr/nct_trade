@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Api {
-    public static double getForexPrice(String currencyPair) throws Exception {
+    public static Double getForexPrice(String currencyPair) throws Exception {
         String url = "https://scanner.tradingview.com/symbol?symbol=FX_IDC:" + currencyPair + "&fields=close|60&no_404=true";
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("GET");

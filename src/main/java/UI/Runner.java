@@ -1,6 +1,7 @@
 package UI;
 
 import calculator.Calculator;
+import util.Help;
 
 import java.text.DecimalFormat;
 
@@ -67,7 +68,7 @@ public class Runner {
     private static void valueOfOnePip() {
         try {
             String symbol = input("enter symbol(EURUSD, USDJPY, ...): ").toUpperCase();
-            double result = Calculator.valueOfOnePip(symbol);
+            Double result = Calculator.valueOfOnePip(symbol);
             DecimalFormat decimalFormat = new DecimalFormat("#,##0.0000");
             println("result: " + decimalFormat.format(result));
         } catch (Exception e) {
@@ -82,7 +83,7 @@ public class Runner {
             Double amountOfRisk = doubleInput("enter amount of risk: ");
             amountOfRisk /= 100;
             Double stopLoss = doubleInput("enter stop loss: ");
-            double result = Calculator.positionSize(balance, amountOfRisk, symbol, stopLoss);
+            Double result = Calculator.positionSize(balance, amountOfRisk, symbol, stopLoss);
             DecimalFormat decimalFormat = new DecimalFormat("#,##0");
             println("units: " + decimalFormat.format((result * 10_000)));
             decimalFormat = new DecimalFormat("#,##0.0000");
@@ -97,7 +98,7 @@ public class Runner {
             println("1 - live all forex prices");
             println("2 - live price symbol");
             println("3 - return to last page");
-            int number = intInput("choose a number: ");
+            Integer number = intInput("choose a number: ");
             switch (number) {
                 case 1 -> getAll();
                 case 2 -> getBySymbol();
@@ -120,7 +121,10 @@ public class Runner {
     private static void getBySymbol() {
         try {
             String symbol = input("choose a symbol(EURUSD, USDJPY, ...): ").toUpperCase();
-            Calculator.getBySymbol(symbol);
+            Double result = Calculator.getBySymbol(symbol);
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.0000");
+            System.out.printf("%-9s %-10s\n", "symbol", "price");
+            System.out.printf("%-9s %-10s\n", Help.formatSymbol(symbol), decimalFormat.format(result));
         } catch (Exception e) {
             println(e.getMessage());
         }

@@ -11,25 +11,25 @@ import static util.Help.symbols;
 
 public class Calculator {
 
-    public static double positionSize(double balance, double amountOfRiskInPercent, String symbol, double stopLoss) throws Exception {
-        double livePrice = Api.getForexPrice(symbol);
+    public static Double positionSize(Double balance, Double amountOfRiskInPercent, String symbol, Double stopLoss) throws Exception {
+        Double livePrice = Api.getForexPrice(symbol);
         return Math.abs(((balance * amountOfRiskInPercent) / (livePrice - stopLoss))
                 / valueOfOnePip(symbol, livePrice));
     }
 
-    public static double margin(double tradeSize, String symbol, String accountCurrency, int marginRatio) throws Exception {
+    public static Double margin(Double tradeSize, String symbol, String accountCurrency, Integer marginRatio) throws Exception {
         String finalSymbol = symbol.substring(0, 3).concat(accountCurrency);
         tradeSize *= 100_000;
         return ((tradeSize * Api.getForexPrice(finalSymbol)) / marginRatio);
     }
 
-    public static double valueOfOnePip(String symbol, double livePrice) {
+    public static Double valueOfOnePip(String symbol, Double livePrice) {
         Double pipLocation = Help.getPipLocation(symbol);
         return (pipLocation / livePrice) * 100_000;
     }
 
-    public static double valueOfOnePip(String symbol) throws Exception {
-        double livePrice = Api.getForexPrice(symbol);
+    public static Double valueOfOnePip(String symbol) throws Exception {
+        Double livePrice = Api.getForexPrice(symbol);
         Double pipLocation = Help.getPipLocation(symbol);
         return (pipLocation / livePrice) * 100_000;
     }
@@ -59,9 +59,8 @@ public class Calculator {
         }
     }
 
-    public static void getBySymbol(String symbol) throws Exception {
-        System.out.printf("%-9s %-10s\n", "symbol", "price");
-        System.out.printf("%-9s %-10s\n", Help.formatSymbol(symbol), Api.getForexPrice(symbol));
+    public static Double getBySymbol(String symbol) throws Exception {
+        return Api.getForexPrice(symbol);
     }
 
     public static Double[] currencyConverter(String firstCurrency, String secondCurrency) throws Exception {
