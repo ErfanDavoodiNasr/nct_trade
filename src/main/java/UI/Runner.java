@@ -23,7 +23,8 @@ public class Runner {
             println("3 - margin calculator");
             println("4 - value of one pip");
             println("5 - currency converter");
-            println("6 - exit");
+            println("6 - leverage calculator");
+            println("7 - exit");
             Integer number = intInput("choose a number: ");
             switch (number) {
                 case 1 -> livePriceMenu();
@@ -31,9 +32,25 @@ public class Runner {
                 case 3 -> margin();
                 case 4 -> valueOfOnePip();
                 case 5 -> CurrencyConverter();
-                case 6 -> System.exit(0);
+                case 6 -> leverage();
+                case 7 -> System.exit(0);
                 default -> println("choose a number between 1 and 6");
             }
+        }
+    }
+
+    private static void leverage() {
+        try {
+            String symbol = input("enter symbol(EURUSD, USDJPY, ...): ").toUpperCase();
+            String accountCurrency = input("enter account currency: ").toUpperCase();
+            symbol = symbol.substring(0, 3).concat(accountCurrency);
+            Double margin = doubleInput("enter margin: ");
+            Double tradeSize = doubleInput("enter trade size(lots): ");
+            Double result = Calculator.leverage(symbol,margin,tradeSize);
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.000000");
+            println("result: ".concat(decimalFormat.format(result)));
+        } catch (Exception e) {
+            println(e.getMessage());
         }
     }
 
