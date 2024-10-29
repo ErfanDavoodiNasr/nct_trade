@@ -70,4 +70,9 @@ public class Calculator {
         result[1] = Api.getForexPrice(secondCurrency.concat(firstCurrency));
         return result;
     }
+
+    public static Double leverage(String symbol, Double margin, Double tradeSize) throws Exception {
+        Double livePrice = Api.getForexPrice(symbol);
+        return (livePrice * tradeSize * 100_000) / margin;
+    }
 }
