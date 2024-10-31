@@ -45,22 +45,17 @@ public class Help {
 
     public static String input(String prompt) {
         System.out.print(prompt);
-        String input = scanner.nextLine();
-        return input;
+        return scanner.nextLine();
     }
 
     public static Integer intInput(String prompt) {
         System.out.print(prompt);
-        Integer input = scanner.nextInt();
-        scanner.nextLine();
-        return input;
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static Double doubleInput(String prompt) {
         System.out.print(prompt);
-        Double input = scanner.nextDouble();
-        scanner.nextLine();
-        return input;
+        return Double.parseDouble(scanner.nextLine());
     }
 
     public static String formatSymbol(String prompt) {
