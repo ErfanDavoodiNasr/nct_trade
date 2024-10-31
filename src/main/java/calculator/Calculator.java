@@ -75,4 +75,12 @@ public class Calculator {
         Double livePrice = Api.getForexPrice(symbol);
         return (livePrice * tradeSize * 100_000) / margin;
     }
+
+    public static Double riskOfRuin(Double winRateInPercent, Double averageWin, Double averageLoss, Double riskPerTradeInPercent, Double lossLevelInPercent) {
+        winRateInPercent /= 100;
+        riskPerTradeInPercent /= 100;
+        lossLevelInPercent /= 100;
+        Double expectedValue = (winRateInPercent * averageWin) - ((1 - winRateInPercent) * (averageLoss));
+        return (Math.pow(((averageLoss - expectedValue) / (averageLoss + expectedValue)), (lossLevelInPercent / riskPerTradeInPercent))) * 100;
+    }
 }

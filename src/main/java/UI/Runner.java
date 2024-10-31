@@ -24,7 +24,8 @@ public class Runner {
             println("4 - value of one pip");
             println("5 - currency converter");
             println("6 - leverage calculator");
-            println("7 - exit");
+            println("7 - risk of ruin calculator");
+            println("8 - exit");
             Integer number = intInput("choose a number: ");
             switch (number) {
                 case 1 -> livePriceMenu();
@@ -33,10 +34,22 @@ public class Runner {
                 case 4 -> valueOfOnePip();
                 case 5 -> CurrencyConverter();
                 case 6 -> leverage();
-                case 7 -> System.exit(0);
+                case 7 -> riskOfRuin();
+                case 8 -> System.exit(0);
                 default -> println("choose a number between 1 and 6");
             }
         }
+    }
+
+    private static void riskOfRuin() {
+        Double winRateInPercent = doubleInput("enter win rate in percent: ");
+        Double averageWin = doubleInput("enter average win: ");
+        Double averageLoss = doubleInput("enter average loss: ");
+        Double riskPerTradeInPercent = doubleInput("enter risk per trade in percent: ");
+        Double lossLevelInPercent = doubleInput("enter loss level in percent: ");
+        Double result = Calculator.riskOfRuin(winRateInPercent,averageWin,averageLoss,riskPerTradeInPercent,lossLevelInPercent);
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.000");
+        println("result: " + decimalFormat.format(result).concat("%"));
     }
 
     private static void leverage() {
