@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Java console application provides essential tools for forex trading, allowing users to perform various calculations related to live forex prices, position sizing, margin requirements, and pip values, and currency conversion. Designed with simplicity in mind, the application is user-friendly and efficient for traders of all experience levels.
+This Java console application provides essential tools for forex trading, allowing users to perform various calculations related to live forex prices, position sizing, margin requirements, pip values, currency conversion, leverage, and risk of ruin. Designed with simplicity in mind, the application is user-friendly and efficient for traders of all experience levels.
 
 ## Features
 
@@ -16,10 +16,13 @@ This Java console application provides essential tools for forex trading, allowi
   
 - **Value of One Pip**: Calculate the monetary value of a single pip movement for a given currency pair.
 
-- **currency converter**: Convert currencies based on the latest exchange rates.
+- **Currency Converter**: Convert currencies based on the latest exchange rates.
+
+- **Leverage Calculator**: Calculate leverage based on the symbol, account currency, margin, and trade size.
+
+- **Risk of Ruin Calculator**: Estimate the risk of ruin based on win rate, average win, average loss, risk per trade, and loss level.
 
 - **Interactive Console Menu**: Navigate through options with a simple console interface.
-
 
 ## Installation
 
@@ -51,8 +54,10 @@ Upon running the application, you will be presented with a menu where you can ch
 2. Position size calculation
 3. Margin calculator
 4. Value of one pip
-5. currency converter
-6. Exit the application
+5. Currency converter
+6. Leverage calculator
+7. Risk of ruin calculator
+8. Exit the application
 
 Follow the prompts to input the necessary data for each calculation.
 
