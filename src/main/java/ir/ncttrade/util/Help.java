@@ -26,40 +26,46 @@ public class Help {
             "AUDPLN"
     );
 
-
     public static Double getPipLocation(String symbol) {
-        Double pipLocation = 0.0001, result;
-        if (symbol.contains("JPY")) {
-            pipLocation = 0.01;
+        if (symbol == null || symbol.isEmpty()) {
+            throw new IllegalArgumentException("Symbol cannot be null or empty");
         }
-        return pipLocation;
+        return symbol.contains("JPY") ? 0.01 : 0.0001;
     }
 
     public static <E> void println(E prompt) {
         System.out.println(prompt);
     }
 
-    public static <E> void print(E prompt) {
-        System.out.print(prompt);
-    }
-
     public static String input(String prompt) {
         System.out.print(prompt);
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 
     public static Integer intInput(String prompt) {
         System.out.print(prompt);
-        return Integer.parseInt(scanner.nextLine());
+        try {
+            return Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            return null;
+        }
     }
 
     public static Double doubleInput(String prompt) {
         System.out.print(prompt);
-        return Double.parseDouble(scanner.nextLine());
+        try {
+            return Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+            return null;
+        }
     }
 
-    public static String formatSymbol(String prompt) {
-        return prompt.substring(0, 3).concat("/").concat(prompt.substring(3));
+    public static String formatSymbol(String symbol) {
+        if (symbol == null || symbol.length() != 6) {
+            throw new IllegalArgumentException("Symbol must be exactly 6 characters long.");
+        }
+        return symbol.substring(0, 3).toUpperCase() + "/" + symbol.substring(3).toUpperCase();
     }
-
 }
