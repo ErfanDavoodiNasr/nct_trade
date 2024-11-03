@@ -1,6 +1,6 @@
-package main;
+package ir.ncttrade;
 
-import UI.Runner;
+import ir.ncttrade.UI.Runner;
 
 public class Main {
     public static void main(String[] args) {

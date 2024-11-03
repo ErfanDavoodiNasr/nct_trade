@@ -38,12 +38,12 @@ This Java console application provides essential tools for forex trading, allowi
 
 3. Compile the application:
    ```bash
-   javac Main.java
+   javac ir.ncttrade.Main.java
    ```
 
 4. Run the application:
    ```bash
-   java Main
+   java ir.ncttrade.Main
    ```
 
 ## Usage

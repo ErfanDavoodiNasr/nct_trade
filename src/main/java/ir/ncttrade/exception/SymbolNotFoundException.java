@@ -1,4 +1,4 @@
-package exception;
+package ir.ncttrade.exception;
 
 public class SymbolNotFoundException extends RuntimeException {
     public SymbolNotFoundException() {

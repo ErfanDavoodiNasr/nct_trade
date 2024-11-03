@@ -1,11 +1,12 @@
-package UI;
+package ir.ncttrade.UI;
 
-import calculator.Calculator;
-import util.Help;
+import ir.ncttrade.util.Help;
+import ir.ncttrade.main.Calculator;
+import ir.ncttrade.main.LivePrice;
 
 import java.text.DecimalFormat;
 
-import static util.Help.*;
+import static ir.ncttrade.util.Help.*;
 
 public class Runner {
 
@@ -110,10 +111,9 @@ public class Runner {
         try {
             String symbol = input("enter symbol(EURUSD, USDJPY, ...): ").toUpperCase();
             Double balance = doubleInput("enter balance: ");
-            Double amountOfRisk = doubleInput("enter amount of risk: ");
-            amountOfRisk /= 100;
+            Double amountOfRiskInPercent = doubleInput("enter amount of risk in percent: ");
             Double stopLoss = doubleInput("enter stop loss: ");
-            Double result = Calculator.positionSize(balance, amountOfRisk, symbol, stopLoss);
+            Double result = Calculator.positionSize(balance, amountOfRiskInPercent, symbol, stopLoss);
             DecimalFormat decimalFormat = new DecimalFormat("#,##0");
             println("units: " + decimalFormat.format((result * 10_000)));
             decimalFormat = new DecimalFormat("#,##0.0000");
@@ -142,7 +142,7 @@ public class Runner {
 
     private static void getAll() {
         try {
-            Calculator.getAllLivePrice();
+            LivePrice.getLivePrice();
         } catch (Exception e) {
             println(e.getMessage());
         }
