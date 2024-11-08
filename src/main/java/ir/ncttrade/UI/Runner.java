@@ -8,11 +8,11 @@ import static ir.ncttrade.util.Help.*;
 
 public class Runner {
 
-    private static final DecimalFormat DECIMAL_FORMAT_0;
-    private static final DecimalFormat DECIMAL_FORMAT_3;
-    private static final DecimalFormat DECIMAL_FORMAT_4;
-    private static final DecimalFormat DECIMAL_FORMAT_5;
-    private static final DecimalFormat DECIMAL_FORMAT_6;
+    public static final DecimalFormat DECIMAL_FORMAT_0;
+    public static final DecimalFormat DECIMAL_FORMAT_3;
+    public static final DecimalFormat DECIMAL_FORMAT_4;
+    public static final DecimalFormat DECIMAL_FORMAT_5;
+    public static final DecimalFormat DECIMAL_FORMAT_6;
 
     static {
         DECIMAL_FORMAT_0 = new DecimalFormat("#,##0");

@@ -1,6 +1,7 @@
 package ir.ncttrade.main;
 
 
+import ir.ncttrade.UI.Runner;
 import ir.ncttrade.network.Api;
 import ir.ncttrade.util.Help;
 
@@ -31,11 +32,7 @@ public class LivePrice {
         return new Thread(new Runnable() {
             public void run() {
                 for (int i = 0; i < 17; i++) {
-                    String s = Help.symbols.get(i);
-                    try {
-                        System.out.printf("%-9s %-10s\n", Help.formatSymbol(s), Api.getForexPrice(s));
-                    } catch (Exception ignored) {
-                    }
+                    showLivePrice(i);
                 }
             }
         });
@@ -44,24 +41,25 @@ public class LivePrice {
         return new Thread(new Runnable() {
             public void run() {
                 for (int i = 17; i < 34; i++) {
-                    String s = Help.symbols.get(i);
-                    try {
-                        System.out.printf("%-9s %-10s\n", Help.formatSymbol(s), Api.getForexPrice(s));
-                    } catch (Exception ignored) {
-                    }
+                    showLivePrice(i);
                 }
             }
         });
     }
+
+    private static void showLivePrice(int i) {
+        String s = Help.symbols.get(i);
+        try {
+            System.out.printf("%-9s %-10s\n", Help.formatSymbol(s), Runner.DECIMAL_FORMAT_6.format(Api.getForexPrice(s)));
+        } catch (Exception ignored) {
+        }
+    }
+
     private static Thread thread3() throws InterruptedException {
         return new Thread(new Runnable() {
             public void run() {
                 for (int i = 34; i < 51; i++) {
-                    String s = Help.symbols.get(i);
-                    try {
-                        System.out.printf("%-9s %-10s\n", Help.formatSymbol(s), Api.getForexPrice(s));
-                    } catch (Exception ignored) {
-                    }
+                    showLivePrice(i);
                 }
             }
         });
@@ -70,11 +68,7 @@ public class LivePrice {
         return new Thread(new Runnable() {
             public void run() {
                 for (int i = 51; i < 68; i++) {
-                    String s = Help.symbols.get(i);
-                    try {
-                        System.out.printf("%-9s %-10s\n", Help.formatSymbol(s), Api.getForexPrice(s));
-                    } catch (Exception ignored) {
-                    }
+                    showLivePrice(i);
                 }
             }
         });
@@ -83,11 +77,7 @@ public class LivePrice {
         return new Thread(new Runnable() {
             public void run() {
                 for (int i = 68; i < 85; i++) {
-                    String s = Help.symbols.get(i);
-                    try {
-                        System.out.printf("%-9s %-10s\n", Help.formatSymbol(s), Api.getForexPrice(s));
-                    } catch (Exception ignored) {
-                    }
+                    showLivePrice(i);
                 }
             }
         });
@@ -96,11 +86,7 @@ public class LivePrice {
         return new Thread(new Runnable() {
             public void run() {
                 for (int i = 85; i < Help.symbols.size(); i++) {
-                    String s = Help.symbols.get(i);
-                    try {
-                        System.out.printf("%-9s %-10s\n", Help.formatSymbol(s), Api.getForexPrice(s));
-                    } catch (Exception ignored) {
-                    }
+                    showLivePrice(i);
                 }
             }
         });

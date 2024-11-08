@@ -1,8 +1,11 @@
 package ir.ncttrade.util;
 
+import lombok.experimental.UtilityClass;
+
 import java.util.List;
 import java.util.Scanner;
 
+@UtilityClass
 public class Help {
     private static final Scanner scanner = new Scanner(System.in);
 
