@@ -3,7 +3,10 @@ package ir.ncttrade.UI;
 
 import ir.ncttrade.main.Calculator;
 import ir.ncttrade.main.LivePrice;
+import ir.ncttrade.util.TextColor;
+
 import java.text.DecimalFormat;
+
 import static ir.ncttrade.util.Help.*;
 
 public class Runner {
@@ -21,25 +24,27 @@ public class Runner {
         DECIMAL_FORMAT_5 = new DecimalFormat("#,##0.00000");
         DECIMAL_FORMAT_6 = new DecimalFormat("#,##0.000000");
     }
-
     public static void run() {
         while (true) {
-            println("███╗   ██╗ ██████╗████████╗    ████████╗██████╗  █████╗ ██████╗ ███████╗");
-            println("████╗  ██║██╔════╝╚══██╔══╝    ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝");
-            println("██╔██╗ ██║██║        ██║          ██║   ██████╔╝███████║██║  ██║█████╗");
-            println("██║╚██╗██║██║        ██║          ██║   ██╔══██╗██╔══██║██║  ██║██╔══╝");
-            println("██║ ╚████║╚██████╗   ██║          ██║   ██║  ██║██║  ██║██████╔╝███████╗");
-            println("╚═╝  ╚═══╝ ╚═════╝   ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝");
+            TextColor.println("███╗   ██╗ ██████╗████████╗    ████████╗██████╗  █████╗ ██████╗ ███████╗",TextColor.GREEN_BOLD_BRIGHT);
+            TextColor.println("████╗  ██║██╔════╝╚══██╔══╝    ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔════╝",TextColor.GREEN_BOLD_BRIGHT);
+            TextColor.println("██╔██╗ ██║██║        ██║          ██║   ██████╔╝███████║██║  ██║█████╗",TextColor.WHITE_BOLD_BRIGHT);
+            TextColor.println("██║╚██╗██║██║        ██║          ██║   ██╔══██╗██╔══██║██║  ██║██╔══╝",TextColor.WHITE_BOLD_BRIGHT);
+            TextColor.println("██║ ╚████║╚██████╗   ██║          ██║   ██║  ██║██║  ██║██████╔╝███████╗",TextColor.RED_BOLD_BRIGHT);
+            TextColor.println("╚═╝  ╚═══╝ ╚═════╝   ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝",TextColor.RED_BOLD_BRIGHT);
             println("");
-            println("1 - live forex prices");
-            println("2 - position size");
-            println("3 - margin calculator");
-            println("4 - value of one pip");
-            println("5 - currency converter");
-            println("6 - leverage calculator");
-            println("7 - risk of ruin calculator");
-            println("8 - exit");
-            Integer number = intInput("choose a number: ");
+            println("🎯 Welcome to the Forex Trading Tools! 🎯");
+            println("");
+            println("📈 1 - Live Forex Prices");
+            println("📏 2 - Position Size Calculator");
+            println("📊 3 - Margin Calculator");
+            println("💵 4 - Value of One Pip");
+            println("💱 5 - Currency Converter");
+            println("🔧 6 - Leverage Calculator");
+            println("⚠️ 7 - Risk of Ruin Calculator");
+            println("❌ 8 - Exit");
+            println("");
+            Integer number = intInput("Choose an option: ");
             switch (number) {
                 case 1 -> livePriceMenu();
                 case 2 -> positionSize();
@@ -52,10 +57,32 @@ public class Runner {
                 case null -> {
                     // intInput() throws exception
                 }
-                default -> println("choose a number between 1 and 6");
+                default -> println("Please choose a number between 1 and 8.");
             }
         }
     }
+
+    private static void livePriceMenu() {
+        while (true) {
+            println("");
+            println("📈 Live Forex Prices Menu");
+            println("1️⃣ 1 - View All Forex Prices");
+            println("🔍 2 - View Price by Symbol");
+            println("🔙 3 - Return to Main Menu");
+            println("");
+            Integer number = intInput("Choose an option: ");
+            switch (number) {
+                case 1 -> getAll();
+                case 2 -> getBySymbol();
+                case 3 -> { println("Returning to main menu..."); return; }
+                case null -> {
+                    // intInput() throws exception
+                }
+                default -> println("Please choose a number between 1 and 3.");
+            }
+        }
+    }
+
 
     private static void riskOfRuin() {
         Double result = Calculator.riskOfRuin(
@@ -88,14 +115,14 @@ public class Runner {
     }
 
     private static void CurrencyConverter() {
-        try{
+        try {
             String firstCurrency = input("enter first currency: ").toUpperCase();
             String secondCurrency = input("enter second currency: ").toUpperCase();
             Double[] result = Calculator.currencyConverter(firstCurrency, secondCurrency);
             println("1 ".concat(firstCurrency).concat(" = ") + DECIMAL_FORMAT_5.format(result[0]) + " ".concat(secondCurrency));
             println("1 ".concat(secondCurrency).concat(" = ") + DECIMAL_FORMAT_5.format(result[1]) + " ".concat(firstCurrency));
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             println(e.getMessage());
         }
     }
@@ -137,26 +164,6 @@ public class Runner {
             println("Lots: " + DECIMAL_FORMAT_4.format(result));
         } catch (Exception e) {
             println(e.getMessage());
-        }
-    }
-
-    private static void livePriceMenu() {
-        while (true) {
-            println("1 - live all forex prices");
-            println("2 - live price symbol");
-            println("3 - return to last page");
-            Integer number = intInput("choose a number: ");
-            switch (number) {
-                case 1 -> getAll();
-                case 2 -> getBySymbol();
-                case 3 -> {println("exiting...");
-                    return;
-                }
-                case null -> {
-                    // intInput() throws exception
-                }
-                default -> println("choose a number between 1 and 3");
-            }
         }
     }
 
