@@ -13,7 +13,7 @@ public class Calculator {
     }
 
     public static Double margin(Double tradeSize, String symbol, String accountCurrency, Integer marginRatio) throws Exception {
-        String finalSymbol = symbol.substring(0, 3).concat(accountCurrency);
+        String finalSymbol = symbol.substring(0, 3).concat(accountCurrency.substring(3));
         tradeSize *= 100_000;
         return ((tradeSize * Api.getForexPrice(finalSymbol)) / marginRatio);
     }
@@ -36,8 +36,8 @@ public class Calculator {
     public static Double[] currencyConverter(String firstCurrency, String secondCurrency) throws Exception {
         Double[] result = new Double[2];
         // result[0] = firstSecond   &   result[1] = secondFirst
-        result[0] = Api.getForexPrice(firstCurrency.concat(secondCurrency));
-        result[1] = Api.getForexPrice(secondCurrency.concat(firstCurrency));
+        result[0] = Api.getForexPrice(firstCurrency.substring(0,3).concat(secondCurrency.substring(3)));
+        result[1] = Api.getForexPrice(secondCurrency.substring(0,3).concat(firstCurrency.substring(3)));
         return result;
     }
 
