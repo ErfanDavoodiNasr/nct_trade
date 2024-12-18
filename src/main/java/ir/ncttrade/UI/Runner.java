@@ -2,7 +2,6 @@ package ir.ncttrade.UI;
 
 
 import ir.ncttrade.main.Calculator;
-import ir.ncttrade.main.LivePrice;
 import ir.ncttrade.util.TextColor;
 
 import java.text.DecimalFormat;
@@ -72,7 +71,6 @@ public class Runner {
             println("");
             Integer number = intInput("Choose an option: ");
             switch (number) {
-                case 1 -> getAll();
                 case 2 -> getBySymbol();
                 case 3 -> { println("Returning to main menu..."); return; }
                 case null -> {
@@ -162,14 +160,6 @@ public class Runner {
             );
             println("units: " + DECIMAL_FORMAT_0.format((result * 10_000)));
             println("Lots: " + DECIMAL_FORMAT_4.format(result));
-        } catch (Exception e) {
-            println(e.getMessage());
-        }
-    }
-
-    private static void getAll() {
-        try {
-            LivePrice.getLivePrice();
         } catch (Exception e) {
             println(e.getMessage());
         }
